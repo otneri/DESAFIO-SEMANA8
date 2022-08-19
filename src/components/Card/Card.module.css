@@ -7,6 +7,12 @@
   width: 100%;
 }
 
+
+.cardSelected {
+  background-color: rgba(3, 81, 3, 0.591);
+}
+
+
 .img {
   border-radius: 20px 20px 0 0;
   width: 100%;
