@@ -51,9 +51,9 @@ function App() {
   return (
     <div className={styles.app}>
       <Header />
-      <FiltroSecao secoes={secoes} onSelecionarSecao={handleSelecionarSecao}/>
+      <FiltroSecao onSelecionarSecao={handleSelecionarSecao} titulo={secoes} />
       <main className={styles.main}>
-        {secoes.map((sec) =>(
+        {secoesFiltradas.map((sec) =>(
           <Secao
             key={sec.nome}
             nome= {sec.nome}
