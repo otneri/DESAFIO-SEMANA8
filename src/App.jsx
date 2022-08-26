@@ -1,44 +1,72 @@
-import { Footer, Header, Secao } from '@components';
-import {useState } from 'react';
+import { Footer, Header, Secao, FiltroSecao } from '@components';
 import produtos from '@services/produtos.json';
+import { useState } from 'react';
 import styles from './App.module.css';
 
-function App() {
-  const subSecoesEntradas = new Set(produtos.entradas.map((p) => p.subSecao));
-  const subSecoesPrincipais = new Set(produtos.principais.map((p) => p.subSecao));
-  console.log(produtos.principais);
 
-  const [contador, setContador] = useState(0);
-  const handleContador = () => {
-    setContador((pCont) => pCont+1);
-    console.log(contador);
+
+const subSecoesEntradas = new Set(produtos.entradas.map((p) => p.subSecao));
+const subSecoesPrincipais = new Set(produtos.principais.map((p) => p.subSecao));
+console.log(subSecoesEntradas, subSecoesPrincipais);
+console.log(Array.from(subSecoesPrincipais))
+
+
+let secoes = [
+  {
+    nome: 'Entradas',
+    produtos: produtos.entradas,
+    subSecoes: Array.from(subSecoesEntradas)
+  },
+
+  {
+    nome: 'Principais',
+    produtos: produtos.principais,
+    subSecoes: Array.from(subSecoesPrincipais)
+  },
+
+  {
+    nome: 'Sobremesas',
+    produtos: produtos.sobremesas,
+    subSecoes: null,
+  },
+];
+function App() {
+
+  const [secaoSelecionada, setSecaoselecionada] = useState(null);
+
+
+  const handleSelecionarSecao = (nomeSelecionado) => {
+    if (nomeSelecionado === secaoSelecionada) {
+      setSecaoselecionada(null);
+    } else {
+      setSecaoselecionada(nomeSelecionado);
+    }
+
   };
+
+  const secoesFiltradas = 
+  secaoSelecionada ? secoes.filter(
+    secao => secao.nome === secaoSelecionada) : secoes
 
   return (
     <div className={styles.app}>
       <Header />
+      <FiltroSecao secoes={secoes} onSelecionarSecao={handleSelecionarSecao}/>
       <main className={styles.main}>
-        <Secao
-          nome='Entradas'
-          produtos={produtos.entradas}
-          subSecoes={Array.from(subSecoesEntradas)}
-        />
+        {secoes.map((sec) =>(
+          <Secao
+            key={sec.nome}
+            nome= {sec.nome}
+            produtos={sec.produtos}
+            subSecoes={sec.subSecoes && Array.from(sec.subSecoes)}
+            
+          />
 
-        <Secao
-          nome='Principais'
-          produtos={produtos.principais}
-          subSecoes={Array.from(subSecoesPrincipais)}
-        />
+        ))}
+        
 
-        <Secao nome='Sobremesas' produtos={produtos.sobremesas} />
       </main>
       <Footer />
-
-      <div >
-      <h1>Aula 01 - Semana 08</h1>
-      <button onClick={handleContador}>Clique em mim</button>;
-      </div>
-
 
     </div>
   );

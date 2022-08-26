@@ -1,6 +1,4 @@
 import PropTypes from 'prop-types';
-
-
 import styles from './Card.module.css';
 
 
@@ -12,7 +10,9 @@ export function Card ({produto, selecionado , onSelecionar})  {
 
   return (
     
-    <div className={`${styles.card} ${selecionado && styles.cardSelected}`} 
+    <div className={
+      `${styles.card} ${selecionado && styles.cardSelected}`
+    } 
     onClick= {onSelecionar}>
       <img 
       className={styles.img} 
@@ -49,6 +49,6 @@ Card.propTypes = {
   }),
   
   selecionado: PropTypes.bool,
-  onSelecionar:PropTypes.string
+  onSelecionar:PropTypes.func,
   
 };
