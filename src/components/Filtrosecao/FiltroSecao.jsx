@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import styles from '../Filtrosecao/Filtro.css';
+import styles from '../Filtrosecao/Filtro.module.css';
 
 export const FiltroSecao = ({ secoes, onSelecionar, secaoSelecionada }) => {
   return (

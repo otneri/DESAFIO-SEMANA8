@@ -12,7 +12,7 @@ export const Header = () => (
 
     <nav>
       <ul className={styles.ul}>
-        <li>
+        <li className={styles.li}>
           <Link to='/produtos-selecionados' className={styles.link}>
             Produtos Selecionados
           </Link>

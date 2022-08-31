@@ -20,6 +20,11 @@
 .ul {
   display: flex;
   list-style: none;
+  
+}
+
+.li {
+  padding: 0em 2em;
 }
 
 .link {
@@ -35,3 +40,4 @@
 .link:hover {
   opacity: 1;
 }
+
