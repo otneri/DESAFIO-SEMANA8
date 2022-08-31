@@ -1,19 +1,26 @@
-import React from "react";
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
+import styles from '../Filtrosecao/Filtro.css';
 
-export const FiltroSecao = ({titulo, onSelecionarSecao}) => {
+export const FiltroSecao = ({ secoes, onSelecionar, secaoSelecionada }) => {
   return (
-    <div>
-      {titulo.map((secao,id) => (
-        <button key={id} onClick={() => onSelecionarSecao(secao.nome)}>{secao.nome}</button>
+    <section className={styles.filtro}>
+      {secoes.map((secao) => (
+        <button
+          key={secao}
+          className={`${styles.botaoFiltro} 
+          ${secaoSelecionada === secao ? styles.botaoFiltroSelecionado : ''}`}
+          onClick={() => onSelecionar(secao)}
+        >
+          {secao}
+        </button>
       ))}
-    </div>
+    </section>
   );
 };
 
 FiltroSecao.propTypes = {
-  titulo: PropTypes.array.isRequired,
-  onSelecionarSecao: PropTypes.func.isRequired,
+  secoes: PropTypes.arrayOf(PropTypes.string),
+  secaoSelecionada: PropTypes.bool,
+  onSelecionar: PropTypes.func,
 };
-

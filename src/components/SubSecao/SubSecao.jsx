@@ -8,7 +8,7 @@ export const SubSecao = ({ produtos, subSecao }) => {
   const produtosFiltrados = produtos.filter((prod) => prod.subSecao === subSecao);
 
   return (
-    <div className= ''>
+    <div className={styles.subSecao}>
       <div>
         <h3>{subSecao}</h3>
         <hr className={styles.separador} />

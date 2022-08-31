@@ -1,4 +1,6 @@
-import logo from '@assets/images/logo.jpeg';
+import { Link } from 'react-router-dom';
+
+import logo  from '../../../public/favicon.ico';
 
 import styles from './Header.module.css';
 export const Header = () => (
@@ -11,9 +13,15 @@ export const Header = () => (
     <nav>
       <ul className={styles.ul}>
         <li>
-          <a className={styles.link} href='#'>
+          <Link to='/produtos-selecionados' className={styles.link}>
+            Produtos Selecionados
+          </Link>
+        </li>
+
+        <li>
+          <Link to='/produtos' className={styles.link}>
             Menu
-          </a>
+          </Link>
         </li>
       </ul>
     </nav>
